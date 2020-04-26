@@ -1,0 +1,69 @@
+import time
+class matbamakina():
+    def __init__(self):
+        self.devir = 0
+        self.sarj = 100
+        self.murekkep =100
+        self.dergi = []
+    def yenidergi(self):
+        print("yeni dergi çıktı hayırlı olsun!!")
+        a = input("derginizin ismini belirleyin :")
+        self.dergi.append(a)
+        time.sleep(2)
+    def calis(self):
+        if(self.murekkep<=0):
+            print("hata!! murekkep yok doldurun")
+        elif(self.sarj<=0):
+            print("hata!! sarj yok doldurun")
+        else:
+            self.devir += 5
+            self.sarj -= 2
+            self.murekkep -= 2
+            print("makina çalışıyor...")
+            time.sleep(0.5)
+            if (self.devir==100):
+                self.devir = 0
+                self.yenidergi()
+    def sarjdoldur(self):
+        if(self.sarj<100):
+            self.sarj +=10
+            print("sarj durumu",self.sarj)
+            time.sleep(2)
+        else:
+            print("sarj full")
+    def murekkepdoldur(self):
+        if(self.murekkep<100):
+            self.murekkep +=10
+            print("murekkep durumu",self.murekkep)
+            time.sleep(2)
+        else:
+            print("murekkep full")
+    def mevcutdurum(self):
+        print("şarj durumu :",self.sarj)
+        print("mürekkep durumu",self.murekkep)
+        print("çıkarılan dergi sayısı", len(self.dergi))
+        if(len(self.dergi)>0):
+            print("çıkarılan dergiler:")
+            for i in self.dergi:
+                print(i)
+        print("yeni derginin %",self.devir,"kısmı tamamlanmıştır.")
+        time.sleep(4)
+makina1 = matbamakina()
+print("matbaaya hşgeldiniz")
+while True:
+    print("-"*30)
+    print("makineyi çalıştımak için 1\n"
+          "sarj doldurmak için 2\n"
+          "murekkep doldurmak için 3\n"
+          "mevcut durumu öğrenmek için 4' ü tuşlayın"
+          )
+    print("-"*30)
+    b = int(input("yapmka istedğiniz işlem nedir:"))
+    if(b==1):
+        makina1.calis()
+    elif(b==2):
+        makina1.sarjdoldur()
+    elif(b==3):
+        makina1.murekkepdoldur()
+    elif(b==4):
+        makina1.mevcutdurum()
